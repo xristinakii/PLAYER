@@ -1,210 +1,92 @@
-<!doctype html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="./styles.css">
-    <style>
-        /* Stiluri generale */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0c1575; /* Fundal albastru închis */
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-        /* Stiluri pentru titlu */
-        h1 {
-            margin: 0;
-            color: #1E90FF; /* Albastru deschis */
-            text-shadow: 0 0 10px rgba(30, 144, 255, 0.7); /* Glow albastru */
-            font-size: 3em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #1E90FF, #00008B); /* Tonuri de albastru */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 1.5s ease-in-out infinite;
-        }
+* {
+  box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(30, 144, 255, 0.5); }
-            50% { text-shadow: 0 0 15px rgba(30, 144, 255, 1); }
-            100% { text-shadow: 0 0 5px rgba(30, 144, 255, 0.5); }
-        }
+body {
+  font:100%/1.6 Roboto,sans-serif;
+  color:#333;
+  background: url("https://img.xatblog.net/image/w3lXd00P2A.jpg");
+  background-size: cover;
+  
+}
 
-        /* Container profil */
-        .profile-container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 139, 0.8); /* Fundal albastru transparent */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(30, 144, 255, 0.7); /* Glow albastru */
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+@keyframes jiggle {
+  
+  0% {
+    transform:rotate(0deg) translateY(0px);
+  }
 
-        .profile-cover {
-            width: 100%;
-            height: 250px;
-            background: url('https://xatimg.com/image/xyzf6LAb5pDh.jpg') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            border-bottom: 5px solid #1E90FF; /* Albastru deschis */
-        }
+  50% {
+    transform:rotate(13deg) translateY(5px);
+  }
+  
+  
+}
 
-        .avatar-container {
-            position: absolute;
-            top: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid #00008B; /* Albastru închis */
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.7); /* Glow albastru */
-        }
+span {
+  display: inline-block;
+}
 
-        .avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-details {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .profile-details h1 {
-            color: #1E90FF; /* Albastru deschis */
-        }
-
-        .profile-details p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-            color: #D3D3D3; /* Gri deschis */
-            font-style: italic;
-        }
-
-        .profile-buttons {
-            margin-top: 20px;
-        }
-
-        .profile-buttons a {
-            display: inline-block;
-            padding: 12px 25px;
-            margin: 5px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #1E90FF; /* Albastru deschis */
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .profile-buttons a:hover {
-            background-color: #00008B; /* Albastru închis */
-            transform: scale(1.05);
-        }
-
-        /* Carduri informații */
-        .info-cards {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            gap: 20px;
-        }
-
-        .info-card {
-            background-color: rgba(0, 0, 139, 0.9); /* Fundal albastru */
-            border: 1px solid #00008B; /* Albastru închis */
-            border-radius: 8px;
-            padding: 20px;
-            flex: 1 1 30%;
-            box-shadow: 0 4px 8px rgba(30, 144, 255, 0.7); /* Glow albastru */
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-bottom: 20px;
-            min-width: 280px;
-        }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(30, 144, 255, 1); /* Glow albastru intens */
-        }
-
-        .info-card h3 {
-            margin-top: 0;
-            color: #1E90FF; /* Albastru deschis */
-            font-size: 1.5rem;
-        }
-
-        .info-card p {
-            margin: 10px 0;
-            color: #D3D3D3; /* Gri deschis */
-        }
-
-        .footer-text {
-            text-align: center;
-            margin-top: auto;
-            color: #1E90FF; /* Albastru deschis */
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .footer-text p {
-            margin: 5px 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="profile-container">
-        <div class="profile-cover"></div>
-        <div class="avatar-container">
-            <img src="https://xatimg.com/image/W1g11CtdCh9u.jpg" alt="Avatar" class="avatar">
-        </div>
-        <div class="profile-details">
-            <h1>𝓒𝓱𝓻𝓲𝓼𝓽𝓲𝓷𝓪</h1>
-            <p>ID: 1416872511</p>
-            <p>Va astept in chat privat pentru design!</p>
-            <div class="profile-buttons">
-                <a href="https://xristinakii.github.io/new2023/indexradio.html" target="_blank">Pachete</a>
-                <a href="https://xristinakii.github.io/new2023/indexgifs.html" target="_blank">Gif</a>
-                <a href="https://xristinakii.github.io/new2023/indexpcback.html" target="_blank">PcBack</a>
-                <a href="https://xristinakii.github.io/new2023/indexdj.html" target="_blank">PstyleGif</a>
-				 <a href="https://xristinakii.github.io/new2023/indexbgs.html" target="_blank">Backgrounds</a>
-				
-            </div>
-        </div>
-        <div class="info-cards">
-    <div class="info-card">
-        <h3>Despre mine</h3>
-        <p></p>
-    </div>
-    <div class="info-card">
-        <h3>Roluri curente</h3>
-        <p></p>
-    </div>
-    <div class="info-card">
-        <h3>Contact</h3>
-        <p>Pentru orice colaborări, mă poți contacta în chat privat la ID-ul: 𝓒𝓱𝓻𝓲𝓼𝓽𝓲𝓷𝓪 (1416872511).</p>
-    </div>
-</div>
-<div class="footer-text">
-    <p>© 2024 𝓒𝓱𝓻𝓲𝓼𝓽𝓲𝓷𝓪. Toate drepturile rezervate.</p>
-</div>
-
-
-
-
-</div></body></html>
+h1 {
+  display: inline-block;
+  text-align: center;
+  color: blue;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 40px;
+  border:3px solid blue;
+  border-right: none;
+  border-left:none;
+  transition:0.8s ease;
+  &:hover {
+    transform:scale(1.5) rotate(-5deg);
+  }
+  
+  & span:nth-child(1) {
+     animation:.3s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  & span:nth-child(2) {
+     animation:.3s 0.1s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  & span:nth-child(3) {
+     animation:.3s 0.2s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  & span:nth-child(4) {
+     animation:.3s 0.3s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  & span:nth-child(5) {
+     animation:.5s 0.4s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  & span:nth-child(6) {
+     animation:.3s 0.5s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  & span:nth-child(7) {
+     animation:.3s 0.6s ease-in-out 
+      infinite forwards jiggle;
+  }
+  
+  
+}
+.container {
+  min-height: 300px;
+  display:grid;
+  justify-content:center;
+  align-content:center;
+  
+}
